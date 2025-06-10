@@ -1,4 +1,5 @@
 // Authentication Module
+// Updated to use Render backend API
 
 // Global variables
 let currentUser = null;
