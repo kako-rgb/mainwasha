@@ -1,5 +1,5 @@
 // Authentication Module
-// Updated to use Render backend API
+// Updated to use Render backend API (mainwasha.onrender.com)
 
 // Global variables
 let currentUser = null;
