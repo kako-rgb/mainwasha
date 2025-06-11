@@ -15,8 +15,11 @@ function initializeDatabaseStatusIndicator() {
     if (!statusIndicator) return;
     
     function checkDatabaseStatus() {
+        // Use the API_URL from config
+        const apiUrl = window.config ? window.config.API_URL : 'https://mainwasha.onrender.com/api';
+        
         // Try to check database connection
-        fetch('/api/db/status')
+        fetch(`${apiUrl}/db/status`)
             .then(response => response.json())
             .then(data => {
                 if (data.connected) {

@@ -51,8 +51,11 @@ async function importData() {
             importBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i> Importing...';
         }
         
+        // Use the API_URL from config
+        const apiUrl = window.config ? window.config.API_URL : 'https://mainwasha.onrender.com/api';
+        
         // Call the import API
-        const response = await fetch('/api/import-data', {
+        const response = await fetch(`${apiUrl}/import-data`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -103,31 +106,34 @@ async function loadDashboardData() {
         updateLoadingState(true);
         
         try {
+            // Use the API_URL from config
+            const apiUrl = window.config ? window.config.API_URL : 'https://mainwasha.onrender.com/api';
+            
             // Fetch only the data we need for the initial view
             const [summaryResponse, recentLoansResponse, usersResponse, activeSessionsResponse] = await Promise.all([
                 // Get summary statistics
-                fetch('/api/dashboard/summary', {
+                fetch(`${apiUrl}/dashboard/summary`, {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json'
                     }
                 }),
                 // Get only recent loans (last 5)
-                fetch('/api/loans/recent?limit=5', {
+                fetch(`${apiUrl}/loans/recent?limit=5`, {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json'
                     }
                 }),
                 // Get user count (lightweight)
-                fetch('/api/users/count', {
+                fetch(`${apiUrl}/users/count`, {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json'
                     }
                 }),
                 // Get active sessions count
-                fetch('/api/sessions/active', {
+                fetch(`${apiUrl}/sessions/active`, {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json'
