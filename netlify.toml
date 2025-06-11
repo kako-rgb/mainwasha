@@ -6,7 +6,14 @@
 [[plugins]]
   package = "@netlify/plugin-functions-install-core"
 
-# Redirect API requests to our api.js Netlify Function
+# Specific route for DB status
+[[redirects]]
+  from = "/api/db/status"
+  to = "/.netlify/functions/db-status"
+  status = 200
+  force = true
+
+# Redirect all other API requests to our api.js Netlify Function
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/api/:splat"
