@@ -4,16 +4,17 @@
 // Global variables
 let currentUser = null;
 // Configure API URL based on environment
+// Always use the Render backend API for production, regardless of the hosting domain
 const API_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
     ? 'http://localhost:3000/api' 
     : 'https://mainwasha.onrender.com/api';
 
+// Make sure we're always using the backend API URL, not the frontend hosting URL
+console.log('Backend API URL configured as:', API_URL);
+console.log('Current hostname:', window.location.hostname);
+
 // Check if user is logged in on page load
 document.addEventListener('DOMContentLoaded', () => {
-    // Log the API URL for debugging
-    console.log('API URL:', API_URL);
-    console.log('Current hostname:', window.location.hostname);
-    
     checkAuthStatus();
     setupLogoutHandler();
 });
@@ -50,7 +51,11 @@ function fetchUserInfo() {
     const token = localStorage.getItem('token');
     if (!token) return Promise.resolve();
     
-    return fetch(`${API_URL}/auth/me`, {
+    // Ensure we're using the full API URL
+    const userInfoUrl = `${API_URL}/auth/me`;
+    console.log('Fetching user info from:', userInfoUrl);
+    
+    return fetch(userInfoUrl, {
         method: 'GET',
         mode: 'cors',
         credentials: 'include',
@@ -137,7 +142,11 @@ function logout() {
 
 // Login function
 function login(username, password) {
-    return fetch(`${API_URL}/auth/login`, {
+    // Ensure we're using the full API URL
+    const loginUrl = `${API_URL}/auth/login`;
+    console.log('Making login request to:', loginUrl);
+    
+    return fetch(loginUrl, {
         method: 'POST',
         mode: 'cors',
         credentials: 'include',
