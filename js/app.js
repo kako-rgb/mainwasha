@@ -3,6 +3,10 @@
 // Global variables
 let sidebarActive = true;
 
+// Make API_URL globally available from config.js
+// This ensures all modules can access it
+window.API_URL = window.config ? window.config.API_URL : 'https://mainwasha.onrender.com/api';
+
 // Initialize the application when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     initializeApp();
