@@ -1520,7 +1520,7 @@ async function processPaymentData(paymentData) {
         const paymentsToProcess = Object.values(consolidatedPayments);
         
         // Send data to backend for processing
-        const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:3000/api' : '/api';
+        // Use API_URL from config.js
         const processResponse = await fetch(`${API_URL}/payments/process-json`, {
             method: 'POST',
             headers: {

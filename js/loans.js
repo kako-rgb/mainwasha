@@ -1,7 +1,7 @@
 // Loan Management Module
 
 // Global variables
-const API_URL = window.location.hostname === 'localhost' ? 'http://localhost:3001/api' : 'https://washaenterprises.vercel.app/api';
+// Use API_URL from config.js
 let loans = [];
 let applications = [];
 let disbursements = [];
