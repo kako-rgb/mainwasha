@@ -90,6 +90,7 @@
     "mquery": "^5.0.0",
     "ms": "^2.0.0",
     "negotiator": "^0.6.3",
+    "node-fetch": "^2.6.7",
     "nodemon": "^2.0.22",
     "normalize-path": "^3.0.0",
     "object-assign": "^4.1.1",

@@ -2,6 +2,10 @@
   publish = "."
   functions = "netlify/functions"
 
+# Plugin to install function dependencies
+[[plugins]]
+  package = "@netlify/plugin-functions-install-core"
+
 # Redirect API requests to our api.js Netlify Function
 [[redirects]]
   from = "/api/*"
