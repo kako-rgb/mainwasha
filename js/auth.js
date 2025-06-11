@@ -3,15 +3,10 @@
 
 // Global variables
 let currentUser = null;
-// Configure API URL based on environment
-// Always use the Render backend API for production, regardless of the hosting domain
-const API_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
-    ? 'http://localhost:3000/api' 
-    : 'https://mainwasha.onrender.com/api';
 
-// Make sure we're always using the backend API URL, not the frontend hosting URL
-console.log('Backend API URL configured as:', API_URL);
-console.log('Current hostname:', window.location.hostname);
+// Use the API_URL from config.js
+// This assumes config.js is loaded before auth.js
+const API_URL = window.config.API_URL;
 
 // Check if user is logged in on page load
 document.addEventListener('DOMContentLoaded', () => {
