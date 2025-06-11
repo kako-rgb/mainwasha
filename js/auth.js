@@ -4,9 +4,10 @@
 // Global variables
 let currentUser = null;
 
-// Use the API_URL from config.js
-// This assumes config.js is loaded before auth.js
-const API_URL = window.config?.API_URL || '';
+// Get API_URL from config.js (must be loaded before this file)
+if (!window.config?.API_URL) {
+    console.error('API_URL not configured - ensure config.js is loaded first');
+}
 
 // Check if user is logged in on page load
 document.addEventListener('DOMContentLoaded', () => {
@@ -47,7 +48,7 @@ function fetchUserInfo() {
     if (!token) return Promise.resolve();
     
     // Ensure we're using the full API URL
-    const userInfoUrl = `${API_URL}/auth/me`;
+    const userInfoUrl = `${window.config.API_URL}/auth/me`;
     console.log('Fetching user info from:', userInfoUrl);
     
     return fetch(userInfoUrl, {
@@ -138,7 +139,7 @@ function logout() {
 // Login function
 function login(username, password) {
     // Ensure we're using the full API URL
-    const loginUrl = `${API_URL}/auth/login`;
+    const loginUrl = `${window.config.API_URL}/auth/login`;
     console.log('Making login request to:', loginUrl);
     
     return fetch(loginUrl, {
