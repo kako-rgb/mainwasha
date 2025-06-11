@@ -1,8 +1,6 @@
 // Main API handler for Netlify Functions
 const fetch = require('node-fetch');
 
-const fetch = require('node-fetch');
-
 exports.handler = async function(event, context) {
   // Set CORS headers
   const headers = {
@@ -14,21 +12,16 @@ exports.handler = async function(event, context) {
 
   // Handle preflight OPTIONS request
   if (event.httpMethod === 'OPTIONS') {
-  Forward the request to the Render backend
-    const RENDER_API_URL = 'https://mainwasha.onrender.com/api';
-    const url = `${RENDER_API_URL}${path}`;
-    
-    console.log(`Proxying request to: ${url}`);
-    
-    // Forward the request with the same method, headers,
+    return {
+      statusCode: 204,
+      headers,
       body: ''
     };
   }
 
   try {
-    try {
     // Get the path from the event
-      const path = event.path.replace('/.netlify/functions/api', '');
+    const path = event.path.replace('/.netlify/functions/api', '');
     
     // Forward the request to the Render backend
     const RENDER_API_URL = 'https://mainwasha.onrender.com/api';

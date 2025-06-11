@@ -7,7 +7,6 @@
     "dotenv": "^16.5.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^7.8.7",
-    "node-fetch": "^2.6.7",
     "node-fetch": "^2.6.7"
   }
 }
