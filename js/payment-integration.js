@@ -7,15 +7,13 @@ let loansData = [];
 // Load payments data
 async function loadPaymentsData() {
     try {
-        const response = await fetch('/data/payments/payment.json');
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        paymentsData = await response.json();
-        console.log('Payments data loaded:', paymentsData.length, 'customers');
+        // Using MongoDB data now, no need to fetch from JSON file
+        console.log('Payment data will be loaded from MongoDB connection');
+        // Initialize with empty array until data is loaded from MongoDB
+        paymentsData = [];
         return paymentsData;
     } catch (error) {
-        console.error('Error loading payments data:', error);
+        console.error('Error initializing payments data:', error);
         paymentsData = [];
         return [];
     }
@@ -215,7 +213,7 @@ function getStatusBadge(status) {
 async function initializePaymentIntegration() {
     console.log('Initializing payment integration...');
     await loadPaymentsData();
-    console.log('Payment integration initialized');
+    console.log('Payment integration initialized - ready for MongoDB data');
 }
 
 // Export functions
