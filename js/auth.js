@@ -6,7 +6,7 @@ let currentUser = null;
 
 // Use the API_URL from config.js
 // This assumes config.js is loaded before auth.js
-const API_URL = window.config.API_URL;
+const API_URL = window.config?.API_URL || '';
 
 // Check if user is logged in on page load
 document.addEventListener('DOMContentLoaded', () => {
