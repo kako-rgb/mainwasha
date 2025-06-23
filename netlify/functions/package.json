@@ -1,0 +1,12 @@
+{
+  "name": "lms-washa-netlify-functions",
+  "version": "1.0.0",
+  "description": "Netlify Functions for Washa Enterprises Loan Management System",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.5.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^7.8.7",
+    "node-fetch": "^2.6.7"
+  }
+}
